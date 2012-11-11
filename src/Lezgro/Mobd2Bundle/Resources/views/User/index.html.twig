@@ -1,0 +1,33 @@
+{# src/Lezgro/Mobd2Bundle/Resources/views/User/index.html.twig #}
+{% extends '::base.html.twig' %}
+{% block title %}Welcome || mobd{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}  
+    <script type="text/javascript" src="{{asset('js/fb.js')}}"></script>
+    <script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>
+    <script type="text/javascript">
+      function login() {
+        FB.login(function(response) {
+            if (response.authResponse) {
+               window.location.href='/mobd/user';
+            } 
+        });
+      }
+    </script>
+{% endblock %}
+
+
+{% block body %}
+    <div id="fb-root"></div>
+    <div class="main">
+    <header>
+      <div class="logo">
+        <img src="{{ asset('images/logo.png')}}">
+      </div>
+    </header>
+    <div class="connect">
+      <a onclick="login();" href="#"><img  src="{{ asset('images/fb.jpg') }}"></a>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+Lezgro\MobdBundle\Entity\Users:
+    type: entity
+    table: null
+    repositoryClass: Lezgro\MobdBundle\Entity\UsersRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        login:
+            type: string
+            length: '255'
+        name:
+            type: string
+            length: '255'
+        email:
+            type: string
+            length: '255'
+    lifecycleCallbacks: {  }

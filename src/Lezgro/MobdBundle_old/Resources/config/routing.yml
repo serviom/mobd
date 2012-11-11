@@ -1,0 +1,11 @@
+# src/Lezgro/MobdBundle/Resources/config/routing.yml
+index:
+    pattern:  /user
+    defaults: { _controller: LezgroMobdBundle:User:index }
+_auth:
+    pattern: /auth
+    defaults: { _controller: LezgroMobdBundle:User:auth }
+_migration:
+    pattern: /migration
+    defaults: { _controller: LezgroMobdBundle:User:migration }
+    

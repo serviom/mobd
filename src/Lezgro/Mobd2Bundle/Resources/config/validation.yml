@@ -1,0 +1,22 @@
+Lezgro\Mobd2Bundle\Entity\Users:
+    properties:
+        name:
+            - NotBlank: ~
+        username:
+            - NotBlank: ~
+        first_name:
+            - Blank: ~
+        last_name:
+            - Blank: ~
+        email:
+            - NotBlank: ~
+            - Email: ~
+        fbid:
+            - NotBlank: ~
+            - Regex:
+                pattern: "/\d+/"
+                match:   true
+                message: Your id contain chars
+        firthday:
+            - Blank: ~
+            - Date: ~

@@ -1,0 +1,4 @@
+# src/Application/HelloBundle/Resources/config/routing.yml
+hello:
+    pattern:  /hello/{name}
+    defaults: { _controller: ApplicationHelloBundle:Default:index }

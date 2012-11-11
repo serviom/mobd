@@ -1,0 +1,25 @@
+lezgro_mobd2:
+    resource: "@LezgroMobd2Bundle/Resources/config/routing.yml"
+    prefix:   /mobd
+    
+#lezgro_mobd2:
+#    resource: "@LezgroMobd2Bundle/Controller/UsersController.php"
+#    type:     annotation
+#    prefix:   /
+
+
+#lezgro_mobd:
+#    resource: "@LezgroMobdBundle/Resources/config/routing.yml"
+#    prefix:   /mobdold
+
+#ApplicationHelloBundle:
+#    resource: "@ApplicationHelloBundle/Resources/config/routing.yml"
+#    prefix:   /
+
+
+# app/config/routing.yml
+#homepage:
+#    pattern:  /
+#    defaults: { _controller: LezgroMobdBundle:Default:index }
+    
+

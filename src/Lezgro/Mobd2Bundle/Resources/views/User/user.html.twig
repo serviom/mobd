@@ -1,0 +1,138 @@
+{# src/Lezgro/Mobd2Bundle/Resources/views/User/user.html.twig #}
+{% extends '::base.html.twig' %}
+{% block title %}Welcome || mobd{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}  
+  <script type="text/javascript" src="{{asset('/js/jquery.nicescroll.js')}}"></script>
+  <script type="text/javascript" src="{{asset('/js/bootstrap/js/bootstrap.js')}}"></script>
+  <script type="text/javascript" src="{{asset('/js/scroll.js')}}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}  
+  <link href="{{asset('/js/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+  <link href="{{asset('/js/bootstrap/css/bootstrap-responsive.css')}}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<body id="invite">
+<div class="topmenu" style="top: -40px; ">
+      <ul>
+        <li class=""><a href="#" class="">menu item</a></li>
+        <li class=""><a href="#" class="">menu item</a></li>
+        <li class=""><a href="#" class="">menu item</a></li>
+      </ul>
+</div>
+  <div class="main">
+    <div class="main-inner">
+    <header>
+      <div class="logo">
+        <a href="#"><img src="{{asset('images/logo.png')}}"></a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="l-column">
+        <div class="event-img edit">
+        <img src="{{asset('images/ads.jpg')}}">
+        </div>
+        <div class="invite-header">
+          Diablo Halloween Ball 2012
+        </div>
+        <div class="invite-desc edit">
+            <div class="desc-text"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+        </div>
+      </div>
+      <div class="main-column">
+      	<div class="main-column-header">
+        	<h2>Invite Your Friends<input type="text" name="invite-filter" class="invite-filter" value="search" onfocus="if (this.value=='search') this.value='';" onblur="if (this.value=='') this.value='search';"></h2>
+        </div>
+        <div class="main-column-place">
+        
+            <p class="add-email-text">Some of your friends aren't on Facebook? 
+              <a href="#" class="open-email">Invite them with email <span class="arr"></span></a>
+            </p>
+            <div>
+            <form class="invite-f-email">
+                <label>Please, input email of friend</label>
+                <input type="email" class="new-email">
+                <button type="button" class="btn btn-success b-inviteemail" onclick="addemail();">Add email</button>
+            </form>
+            </div>          
+        </div>
+        <div class="main-column-info">
+            
+        	<div class="invite-list">
+              <div class="email-list">
+                <div class="il-itemheader header em-itemheader">
+                <div class="il-name">&nbsp;</div>
+                	<div class="il-spot">
+                    	<a data-original-title="Simple text" href="#" rel="tooltip" data-placement="top"></a>Spot
+                    </div>
+                </div>
+              </div>
+              <div class="il-itemheader header">
+                <div class="il-name">&nbsp;</div>
+                <div class="il-spot"><a data-original-title="Simple text" href="#" rel="tooltip" data-placement="top"></a>Spot</div>
+                <div class="il-fb">Invite with</div>
+              </div>
+              <div class="il-listscroll"><div class="il-listscroll-inner">
+             {% for friend in friendsInfo %}
+                    {% include 'LezgroMobd2Bundle:User:friendDetails.html.twig' with {'friend': friend} %}
+             {% endfor %}       
+             </div>
+              </div>
+            </div>
+        </div>
+        
+      </div>
+      <div class="r-column"> 
+        <div class="r-column-b-invite">  
+        <button type="button" class="btn btn-success b-invite" data-loading-text="Please wait...">Invite friends</button>
+        <div class="r-column-limits">
+            <p class="add-limits-text">Want a faster decisons? <br>
+              <a href="#" class="open-limits">Add some limits <span class="arr"></span></a>
+            </p>
+            <div>
+            <form class="invite-limits">
+              <label>At least this many people</label>
+                <select class="number">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">more</option>
+              </select>
+              <label>At most this many people</label>
+                <select class="number">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">more</option>
+                </select>
+                <label>Make the decision in</label>
+                <select class="number">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">more</option>
+                </select>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+<footer>
+    <p>© 2012 Mobd Inc. All rights reserved.</p>
+</footer>
+
+
+</body>
+{% endblock %}

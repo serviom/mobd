@@ -1,0 +1,26 @@
+Lezgro\MobdBundle\Entity\Friends:
+    type: entity
+    table: null
+    repositoryClass: Lezgro\MobdBundle\Entity\FriendsRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '255'
+            nullable: false
+        idfacebook:
+            type: string
+            length: '255'
+            nullable: false
+            unique: true
+        emial:
+            type: string
+            length: '255'
+            unique: true
+            nullable: true
+            
+    lifecycleCallbacks: {  }

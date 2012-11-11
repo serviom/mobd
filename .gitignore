@@ -1,0 +1,19 @@
+# Bootstrap
+#app/bootstrap*
+
+# Symfony directories
+#vendor/*
+#*/logs/*
+#*/cache/*
+#web/uploads/*
+#web/bundles/*
+
+# Configuration files
+#app/config/parameters.ini
+
+# my ignore
+.hg/*
+.hgignore
+nbproject/*
+aceess_symfony2.log
+error_symfony2.log
