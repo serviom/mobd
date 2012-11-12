@@ -60,17 +60,34 @@ class UserController extends Controller
 //        $request->getPreferredLanguage(array('en', 'fr'));
 //
 //        $request->query->get('page'); // get a $_GET parameter
-        
-      $request = $this->get('request');
-      $token = $request->request->get('token'); 
-      $fbid = $request->request->get('fbid');
+       
+        # треба буде потім розкоментувати  
+//      $request = $this->get('request');
+//      $token = $request->request->get('token'); 
+//      $fbid = $request->request->get('fbid');
+//      
+//      $session = $this->get('request')->getSession();
+//      
+//      $session->set('token', $token);
+//      $session->set('fbid', $fbid);
       
-      $session = $this->get('request')->getSession();
-      $session->set('token', $token);
-      $session->set('fbid', $fbid);
+//      $returnArray = $this->getDoctrine()->getRepository('LezgroMobd2Bundle:Users')
+//                          ->updateUserInfo(array('fbid' => $fbid,'token' => $token));
       
-      $returnArray = $this->getDoctrine()->getRepository('LezgroMobd2Bundle:Users')
-                        ->updateUserInfo(array('fbid' => $fbid,'token' => $token));
+      $fbid = '100000995224930';
+      $userInfo = $this->getDoctrine()->getRepository('LezgroMobd2Bundle:Users')->getUserInfo($fbid);
+      
+      
+//      $userInfo = array( 'name' => $objectUser->getName(), 
+//                         'id' => $objectUser->getId(),
+//                         'first_name' => $objectUser->getFirstname(),
+//                         'las_name' => $objectUser->getLastname()
+//      );
+      
+      
+      $friendsInfo = $this->getDoctrine()->getRepository('LezgroMobd2Bundle:Relevans')->getFriends($userInfo['id']);
+      
+      $returnArray =  array('userInfo' => $userInfo,'friendsInfo' => $friendsInfo);
       
       $content = $this->renderView('LezgroMobd2Bundle:User:user.html.twig', $returnArray);
 

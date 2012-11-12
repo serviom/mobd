@@ -24,7 +24,8 @@ class Relevans
     /**
      * @var integer $friendid
      *
-     * @ORM\Column(name="friendid", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="friends")
+     * @ORM\JoinColumn(name="friendid", referencedColumnName="id")
      */
     private $friendid;
 

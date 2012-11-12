@@ -1,8 +1,12 @@
 function addemail() {
 	$('.em-itemheader').show();
 	var nE = $(".new-email").val();
-	$(".email-list").append("<div class='il-item item-checked'><div class='il-name'>"+nE+"</div><div class='il-spot'><input type='checkbox' name='option2' value='a2' class='il-friend'></div></div>");
+	
+	$(".email-list").append("<div class='il-item item-checked'><div class='il-name'>"+nE+"</div><div class='il-spot'><input type='checkbox' name='friendnoid[][spot]' value='Y' class='il-friend'><input type='hidden' name='friendnoid[][email]' value='" + nE  + "' /></div></div>");
+	
+	
 	$(".email-list").css({"margin":"0px 0 20px 0"});
+	
 	$(".email-list .il-name").click(function() {
 	  	$(this).parent().remove();
 	  	var S = $(".email-list .il-item").length;
@@ -11,18 +15,36 @@ function addemail() {
 }
 
 function clickemail() {
-	$(".b-email").click(function() {
+    $(".b-email").click(function() {
 		$(".changeemailbox").remove();
-		$(this).parent().parent().append("<div class='changeemailbox'><p>Would you like to send the invitation to <a href='#'>some@domain.com</a>?</p><div class='email-buttons'><button type='button' class='btn btn-success b-emailok' onClick='okemail();'>Yes</button><button type='button' class='btn  b-emailchange' onClick='changeemail();'>Change</button></div></div>");
+		var email = $('.friendemail',$(this).parent().parent().parent()).val();
+		if(!email) {
+		  email = 'none';
+		}
+		$(this).parent().parent().append("<div class='changeemailbox'><p>Would you like to send the invitation to <a href='#'>'" + email + "'</a>?</p><div class='email-buttons'><button type='button' class='btn btn-success b-emailok' onClick='okemail(this);'>Yes</button><button type='button' class='btn  b-emailchange' onClick='changeemail();'>Change</button></div></div>");
 	});	
 }
 
-function okemail() {
-	$(".b-emailok").parent().parent().remove();
+function okemail(obj) {
+
+  var email = $('.ch-email',$(obj).parent().parent()).val();
+  
+  if(!email) {
+      email = $('.friendemail',$(obj).parent().parent().parent().parent()).val();
+  } 
+  
+  if(check.isValid(email,'email')) {
+    $('.friendemail',$(obj).parent().parent().parent().parent()).val(email);
+    $('.friendinvationtype',$(obj).parent().parent().parent().parent()).val('email');
+    $('.ch-email',$(obj).parent().parent()).css('border','none');
+    $(obj).parent().parent().remove();
+  } else {
+    $('.ch-email',$(obj).parent().parent()).css('border','1px solid red');
+  }
 }
 
 function changeemail() {
-	$(".b-emailok").parent().parent().html("<p>Please, input a new email</p><input type='email' class='ch-email'><div class='email-buttons'><button type='button' class='btn btn-success b-emailok' onClick='okemail();'>Save</button></div");	
+	$(".b-emailok").parent().parent().html("<p>Please, input a new email</p><input type='email' class='ch-email'><div class='email-buttons'><button type='button' class='btn btn-success b-emailok' onClick='okemail(this);'>Save</button></div");	
 }
 
 function hoverdesc() {
@@ -63,11 +85,13 @@ $(document).ready( function() {
 	$(".il-name").click(function() {
 		if ($(this).parent().hasClass('item-checked')) {
   			$(this).parent().removeClass('item-checked');
-			$(this).parent().children('.il-fb').children().children().removeClass("active");
-		}
-  		else {
+			  $(this).parent().children('.il-fb').children().children().removeClass("active");
+			  $('.friendinvationtype',$(this).parent()).val('');
+			  
+		} else {
   			$(this).parent().addClass('item-checked');
-			$(this).parent().children('.il-fb').children().children(".b-fb").addClass("active");
+			  $(this).parent().children('.il-fb').children().children(".b-fb").addClass("active");
+			  $('.friendinvationtype',$(this).parent()).val('fb');
 		}
  		
 	});
@@ -80,6 +104,7 @@ $(document).ready( function() {
       });
 
 	$(".il-friend .btn").click(function() {
+    $('.friendinvationtype',$(this).parent().parent().parent()).val('fb');
 		$(this).parent().parent().parent().addClass('item-checked');
 	});
 	
@@ -114,10 +139,11 @@ $(document).ready( function() {
 	
 	$(".open-email").click(function() {
 	  $('.invite-f-email').slideToggle();
-    });
+  });
 	
 	$(".b-invite").click(function () {
-      window.location = "event-wall.html";
+         $('invite-form').submit();
+         //window.location = "event-wall.html";
     });
 	
 	$(".b-maybe").click(function () {

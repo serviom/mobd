@@ -1,9 +1,13 @@
 <div class="il-item">
-  <img src="https://graph.facebook.com/{{ friend.id }}/picture">
-  <div class="il-name">{{ friend.name }}</div>
+  <input type="hidden" class="friendemail" name="friends[{{ friend.id }}][email]" value="{{friend.friendid.email}}" />
+  <input type="hidden"  name="friends[{{ friend.id }}][spot]" value="" />
+  <input type="hidden" class="friendinvationtype" name="friends[{{ friend.id }}][invationtype]" value="" />
+  
+  <img src="https://graph.facebook.com/{{ friend.friendid.fbid }}/picture">
+  <div class="il-name">{{ friend.friendid.name }}</div>
 
   <div class="il-spot">
-      <input type="checkbox" name="option2" value="a2" class="il-friend">
+      <input type="checkbox" name="friends[{{ friend.id }}][spot]" value="Y" class="il-friend friendspot" />
   </div>
   <div class="il-fb">    
       <div class="btn-group il-friend" data-toggle="buttons-radio">

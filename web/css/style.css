@@ -640,14 +640,14 @@ span.arr{
 	background:url(../js/bootstrap/img/glyphicons-halflings.png) no-repeat 0px -71px;
 	}
 	
-.icon-email {
+.il-fb .icon-email {
 	display:block;
 	width:15px;
 	height:15px;
 	background:url(../js/bootstrap/img/glyphicons-halflings.png) no-repeat -71px 0px;
 	}
 	
-.icon-fb {
+.il-fb .icon-fb {
 	display:block;
 	width:15px;
 	height:15px;

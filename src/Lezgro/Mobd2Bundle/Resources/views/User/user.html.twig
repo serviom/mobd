@@ -7,6 +7,7 @@
   <script type="text/javascript" src="{{asset('/js/jquery.nicescroll.js')}}"></script>
   <script type="text/javascript" src="{{asset('/js/bootstrap/js/bootstrap.js')}}"></script>
   <script type="text/javascript" src="{{asset('/js/scroll.js')}}"></script>
+  <script type="text/javascript" src="{{asset('/js/addscripts.js')}}"></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -43,8 +44,11 @@
         </div>
       </div>
       <div class="main-column">
+        <form action method="POST" id="invite-form">
       	<div class="main-column-header">
-        	<h2>Invite Your Friends<input type="text" name="invite-filter" class="invite-filter" value="search" onfocus="if (this.value=='search') this.value='';" onblur="if (this.value=='') this.value='search';"></h2>
+        	<h2>Invite Your Friends
+                <input type="text" name="invite-filter" class="invite-filter" value="search" onfocus="if (this.value=='search') this.value='';" onblur="if (this.value=='') this.value='search';">
+            </h2>
         </div>
         <div class="main-column-place">
         
@@ -83,7 +87,7 @@
               </div>
             </div>
         </div>
-        
+      </form>  
       </div>
       <div class="r-column"> 
         <div class="r-column-b-invite">  
@@ -95,7 +99,7 @@
             <div>
             <form class="invite-limits">
               <label>At least this many people</label>
-                <select class="number">
+                <select class="number" name="leastpeople" id="leastpeople" >
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -104,7 +108,7 @@
                   <option value="6">more</option>
               </select>
               <label>At most this many people</label>
-                <select class="number">
+                <select class="number" name="mostpeople" id="mostpeople">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -113,7 +117,7 @@
                   <option value="6">more</option>
                 </select>
                 <label>Make the decision in</label>
-                <select class="number">
+                <select class="number" name="decision" id="decision">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>

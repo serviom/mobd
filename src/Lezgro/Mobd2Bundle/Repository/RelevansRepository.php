@@ -17,4 +17,14 @@ class RelevansRepository extends EntityRepository
                 $em->flush();
         } 
     }
+    
+    public function getFriends($userId) {
+        $query = $this->getEntityManager()
+                   ->createQuery('
+                    SELECT r,u FROM LezgroMobd2Bundle:Relevans r
+                    JOIN r.friendid u
+                    WHERE r.userid = :userid')
+                    ->setParameter('userid', $userId);
+        return  $query->getArrayResult();
+    }
 }

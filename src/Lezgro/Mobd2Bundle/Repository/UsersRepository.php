@@ -15,7 +15,6 @@ class UsersRepository extends EntityRepository
     {
         $parser = new \Lezgro\Mobd2Bundle\Tools\Parser($param);
         $userInfo = $parser->getUserInfo();
-        print_r($userInfo);
         $userId = $this->_checkUserInBase($userInfo['id']);
         if(!$userId) {
             // insert user
@@ -114,5 +113,15 @@ class UsersRepository extends EntityRepository
         $em->persist($users);
         $em->flush();
         return $users->getId();
+    }
+    
+    public function getUserInfo($fbid) {
+        $query = $this->getEntityManager()
+           ->createQuery('
+            SELECT p FROM LezgroMobd2Bundle:Users p
+            WHERE p.fbid = :fbid')
+            ->setParameter('fbid', $fbid)->setMaxResults(1);
+        $result = $query->getResult(2);
+        return $result[0];
     }
 }
